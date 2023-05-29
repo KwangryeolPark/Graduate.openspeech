@@ -20,6 +20,13 @@
 </div>
 
 ---
+# openspeech와 차이점.
+```bash
+install.sh에 torch 1.13.1+cu117 관련 설치 코드와 librosa, sentencepiece pytorch_lightning 그리고 hydra-core 설치 코드 넣음.
+openspeech -> data -> audio -> load.py에서 signal 부분을 수정.   
+run/run_Korean_voice.sh에서 DATASET_PATH를 BASE_PATH와 동일하게 해야 작동함. -> 왜 그렇게 설계돼 있는지는 ㅁㄹ...   
+```
+---   
 
 <img src="https://raw.githubusercontent.com/openspeech-team/openspeech/55e50cb9b3cc3e7a6dfddcd33e6e698cca3dae3b/docs/img/logo.png" height=20> OpenSpeech provides reference implementations of various ASR modeling papers and three languages recipe to perform tasks on automatic speech recognition. We aim to make ASR technology easier to use for everyone.
 
