@@ -35,8 +35,8 @@ def load_audio(audio_path: str, sample_rate: int, del_silence: bool = False) -> 
     """
     try:
         if audio_path.endswith("pcm"):
-            signal = np.memmap(audio_path, dtype="h", mode="r").astype("float32")
-
+            # signal = np.memmap(audio_path, dtype="h", mode="r").astype("float32")
+            signal = np.memmap(audio_path, mode="r").astype("float32")
             if del_silence:
                 non_silence_indices = librosa.effects.split(signal, top_db=30)
                 signal = np.concatenate([signal[start:end] for start, end in non_silence_indices])
