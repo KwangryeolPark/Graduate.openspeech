@@ -85,7 +85,7 @@ except ImportError:
     raise ValueError(PYTORCH_LIGHTNING_IMPORT_ERROR)
 
 DUMMY_SIGNALS, _ = librosa.load(librosa.ex("choice"))
-DUMMY_FEATURES = librosa.feature.melspectrogram(DUMMY_SIGNALS, n_mels=80)
+DUMMY_FEATURES = librosa.feature.melspectrogram(y=DUMMY_SIGNALS, n_mels=80)
 DUMMY_INPUTS = torch.FloatTensor(DUMMY_FEATURES).transpose(0, 1).unsqueeze(0).expand(3, -1, -1)
 DUMMY_INPUT_LENGTHS = torch.IntTensor([1070, 900, 800])
 DUMMY_TARGETS = torch.LongTensor(
