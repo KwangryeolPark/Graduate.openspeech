@@ -143,8 +143,8 @@ class LightningKsponSpeechDataModule(pl.LightningDataModule):
             None
         """
         valid_end_idx = self.KSPONSPEECH_TRAIN_NUM + self.KSPONSPEECH_VALID_NUM
-
         audio_paths, transcripts = self._parse_manifest_file()
+        
         audio_paths = {
             "train": audio_paths[: self.KSPONSPEECH_TRAIN_NUM],
             "valid": audio_paths[self.KSPONSPEECH_TRAIN_NUM : valid_end_idx],
