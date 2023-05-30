@@ -132,3 +132,6 @@ dmypy.json
 .pyre/
 outputs
 dysarthria_models/*
+
+*.ckpt
+.gitignore
