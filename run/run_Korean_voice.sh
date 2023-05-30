@@ -5,6 +5,7 @@ export DATASET_PATH="$BASE_PATH"
 export TEST_DATASET_PATH="$BASE_PATH/KsponSpeech_eval"
 export TEST_MANIFEST_DIR="$BASE_PATH/KsponSpeech_scripts"
 export MANIFEST_FILE_PATH=/home/pkr7098/Data/Korean_voice/KsponSpeech_scripts/train.trn
+export CHECKPOINT_PATH="./ckpt"
 
 python3 ./openspeech_cli/hydra_train.py \
     dataset=ksponspeech \
@@ -16,7 +17,8 @@ python3 ./openspeech_cli/hydra_train.py \
     audio=melspectrogram \
     lr_scheduler=warmup_reduce_lr_on_plateau \
     trainer=gpu \
-    criterion=cross_entropy
+    criterion=cross_entropy \
+    trainer.save_checkpoint_n_steps=100 
 
 # python3 ./openspeech_cli/hydra_train.py \
 #     dataset=ksponspeech \
