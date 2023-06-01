@@ -135,4 +135,4 @@ dysarthria_models/*
 
 *.ckpt
 .gitignore
-warp-rnnt
+warp-rnnt/*

@@ -33,8 +33,9 @@ from openspeech.tokenizers.tokenizer import Tokenizer
 @dataclass
 class KsponSpeechCharacterTokenizerConfigs(TokenizerConfigs):
     unit: str = field(default="kspon_character", metadata={"help": "Unit of vocabulary."})
-#    vocab_path: str = field(default="../../../aihub_labels.csv", metadata={"help": "Path of vocabulary file."})
-    vocab_path: str = field(default="../../../kspon.csv", metadata={"help": "Path of vocabulary file."})
+    # vocab_path: str = field(default="../../../aihub_labels.csv", metadata={"help": "Path of vocabulary file."})
+    # vocab_path: str = field(default="/home/pkr7098/python/Graduate.openspeech/kspon.csv", metadata={"help": "Path of vocabulary file."})
+    vocab_path: str = field(default="/home/pkr7098/python/Graduate.openspeech/kspon.csv.backup2", metadata={"help": "Path of vocabulary file."})
 
 @register_tokenizer("kspon_character", dataclass=KsponSpeechCharacterTokenizerConfigs)
 class KsponSpeechCharacterTokenizer(Tokenizer):
@@ -52,10 +53,6 @@ class KsponSpeechCharacterTokenizer(Tokenizer):
             encoding=configs.tokenizer.encoding,
         )
         self.labels = self.vocab_dict.keys()
-#        print(configs.tokenizer.sos_token)
-#        print(configs.tokenizer.eos_token)
-#        print(configs.tokenizer.pad_token)
-#        print(configs.tokenizer.blank_token)
         self.sos_id = int(self.vocab_dict[configs.tokenizer.sos_token])
         self.eos_id = int(self.vocab_dict[configs.tokenizer.eos_token])
         self.pad_id = int(self.vocab_dict[configs.tokenizer.pad_token])
@@ -83,6 +80,7 @@ class KsponSpeechCharacterTokenizer(Tokenizer):
                 elif label.item() == self.blank_id:
                     continue
                 sentence += self.id_dict[label.item()]
+                print(sentence)
             return sentence
 
         sentences = list()
