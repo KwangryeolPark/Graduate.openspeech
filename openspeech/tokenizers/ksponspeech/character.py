@@ -33,8 +33,6 @@ from openspeech.tokenizers.tokenizer import Tokenizer
 @dataclass
 class KsponSpeechCharacterTokenizerConfigs(TokenizerConfigs):
     unit: str = field(default="kspon_character", metadata={"help": "Unit of vocabulary."})
-    # vocab_path: str = field(default="../../../aihub_labels.csv", metadata={"help": "Path of vocabulary file."})
-    # vocab_path: str = field(default="/home/pkr7098/python/Graduate.openspeech/kspon.csv", metadata={"help": "Path of vocabulary file."})
     vocab_path: str = field(default="/home/pkr7098/python/Graduate.openspeech/kspon.csv.backup2", metadata={"help": "Path of vocabulary file."})
 
 @register_tokenizer("kspon_character", dataclass=KsponSpeechCharacterTokenizerConfigs)
@@ -80,7 +78,7 @@ class KsponSpeechCharacterTokenizer(Tokenizer):
                 elif label.item() == self.blank_id:
                     continue
                 sentence += self.id_dict[label.item()]
-                print(sentence)
+            print(sentence)
             return sentence
 
         sentences = list()
@@ -127,7 +125,6 @@ class KsponSpeechCharacterTokenizer(Tokenizer):
                 next(labels)
 
                 for row in labels:
-                    # print(row[1])
                     unit2id[row[1]] = row[0]
                     id2unit[int(row[0])] = row[1]
 

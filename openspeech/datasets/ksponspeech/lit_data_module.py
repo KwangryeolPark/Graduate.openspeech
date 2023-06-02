@@ -125,8 +125,6 @@ class LightningKsponSpeechDataModule(pl.LightningDataModule):
         Returns:
             tokenizer (Tokenizer): tokenizer is in charge of preparing the inputs for a model.
         """
-        print("prepare_data##############################################")
-        print(self.configs.dataset.manifest_file_path)
         if not os.path.exists(self.configs.dataset.manifest_file_path):
             self.logger.info("Manifest file is not exists !!\n" "Generate manifest files..")
             if not os.path.exists(self.configs.dataset.dataset_path):

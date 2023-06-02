@@ -31,10 +31,11 @@ export VOCAB_PATH=/home/pkr7098/python/Graduate.openspeech/kspon.csv
 
 python3 ./openspeech_cli/hydra_train.py \
     dataset=ksponspeech \
-    dataset.manifest_file_path=$MANIFEST_FILE_PATH \
-    dataset.test_manifest_dir=$MANIFEST_FILE_PATH \
     dataset.dataset_path=$DATASET_PATH \
     dataset.test_dataset_path=$TEST_DATASET_PATH \
+    dataset.test_manifest_dir=$TEST_MANIFEST_DIR \
+    dataset.manifest_file_path=$MANIFEST_FILE_PATH \
+    dataset.test_manifest_dir=$MANIFEST_FILE_PATH \
     tokenizer.vocab_path=$VOCAB_PATH \
     tokenizer=kspon_character \
     model=listen_attend_spell \
@@ -45,3 +46,4 @@ python3 ./openspeech_cli/hydra_train.py \
     trainer.batch_size=256 \
     trainer.max_epochs=100 \
     audio.sample_rate=48000 \
+    
